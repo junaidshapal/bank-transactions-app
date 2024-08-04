@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BankTransations.Models.Transaction>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountNumber)
+                    </th>
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.BankName)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.BeneficiaryName)
+                    </th>
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.SWIFTCode)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+
+                    <th>
+                        <a class="btn btn-success text-white" onclick="showInPopup('@Url.Action("AddOrEdit", "Transactions", null, Context.Request.Scheme)','New Transaction')">
+                            <i class="fas fa-random"></i> New
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountNumber)
+                        </td>
+                        @*<td>
+                    @Html.DisplayFor(modelItem => item.BankName)
+                    </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BeneficiaryName)
+                        </td>
+                        @*<td>
+                    @Html.DisplayFor(modelItem => item.SWIFTCode)
+                    </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+
+                        <td>
+                            <a onclick="addOrEdit(@item.TransactionId)" class="btn btn-warning">
+                                   <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <form onsubmit="return jQueryAjaxDelete(this);" class="d-inline" asp-action="Delete" asp-route-id="@item.TransactionId" >
+                                    <input type="submit" value="Delete"  class="btn btn-danger"/>
+                            </form>
+                            <a  asp-action="Details" asp-route-id="@item.TransactionId" class="btn btn-info">Detail</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

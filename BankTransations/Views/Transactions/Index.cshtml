@@ -1,0 +1,16 @@
+﻿@model IEnumerable<BankTransations.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-md-12">
+    <h1 class="text-center alert alert-success">
+        <i class="fas fa-comment-dollar text-success"></i>Transaction history
+    </h1>
+</div>
+
+<div id="view-all">
+    @await Html.PartialAsync("_ViewAll",Model)
+</div>
+

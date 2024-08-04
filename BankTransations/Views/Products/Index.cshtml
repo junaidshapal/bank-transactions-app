@@ -1,0 +1,19 @@
+﻿@model IEnumerable<BankTransations.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*onclick="showInPopup2('@Url.Action("AddOrEditProduct","Products",null, Context.Request.Scheme)','New Prroduct')"*@
+
+<div class="col-md-12">
+    <h1 class="text-center alert alert-success">
+        <i class="fas fa-comment-dollar text-success"></i>Products history
+    </h1>
+</div>
+
+<div id="view-all-products">
+    @await Html.PartialAsync("_ViewAllProducts",Model)
+</div>
+
+

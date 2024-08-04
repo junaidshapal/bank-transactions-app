@@ -1,0 +1,65 @@
+﻿@*@model IEnumerable<BankTransations.Models.Withdraw>*@
+
+<table class="table" id="WithdrawTablee">
+    <thead>
+        <tr>
+            <th>Transaction Id</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>500</td>
+            <td>12/12/12</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>500</td>
+            <td>12/12/12</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>500</td>
+            <td>12/12/12</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>500</td>
+            <td>12/12/12</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>500</td>
+            <td>12/12/12</td>
+        </tr>
+    </tbody>
+</table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var transactionId = $('#hiddenTransactionId').val();
+        $.ajax({
+            type: "GET",
+            url: "/Transactions/GetWithdrawsByTransationId",
+            data: {
+                TransactionId: transactionId
+            },
+            success: function (response) {
+                debugger
+                var _html = "";
+                for (var i = 0; i < response.length; i++) {
+                    _html += '<tr>';
+                    _html += '<td>' + response[i].transactionId + '</td>'
+                    _html += '<td>' + response[i].amount + '</td>'
+                    _html += '<td>' + response[i].date + '</td>'
+                    _html += '</tr>';
+                }
+                $('#WithdrawTablee tbody').html(_html);
+            }
+        });
+    })
+</script>

@@ -1,0 +1,135 @@
+﻿@page
+@model RegisterModel
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        /*background-image: url('https://i.pinimg.com/originals/3f/c1/c1/3fc1c122514a31b4495f5337ea9a6c46.jpg');*/
+        background-image: url("/Images/reg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form {
+        width: 600px;
+        background-color: #fff;
+        padding: 45px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin-top: 40px;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    .input-field {
+        margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #2196f3;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+    }
+
+        button[type="submit"]:hover {
+            background-color: #0d8cf0;
+        }
+
+    footer {
+        visibility: collapse;
+    }
+</style>
+<body>
+    <div class="container">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h1 class="text-center alert alert-primary" style="font-family:cursive">Register</h1>
+            <h3 style="padding:15px; font-family: emoji;" class="text-center">Create a new account</h3>
+            <div class="input-field">
+                <input asp-for="Input.Email" type="email" placeholder="*Email">
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="input-field">
+                <input asp-for="Input.Password" type="password" placeholder="*Password">
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="input-field">
+                <input asp-for="Input.ConfirmPassword" type="password" placeholder="*ConfirmPassword">
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Create a new account.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.ConfirmPassword"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+        </form>
+    </div>
+</div>
+*@
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

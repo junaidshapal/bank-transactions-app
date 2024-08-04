@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BankTransations</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BankTransations.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+        
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Georgia;
+        }
+
+        .navbar {
+            background-color: #457 !important;
+        }
+
+            .navbar .nav-link {
+                color: #fff !important; 
+            }
+
+            .navbar .navbar-brand {
+                color: #fff !important; 
+                font-weight: bold;
+                font-size: 1.5em;
+            }
+
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .background {
+            background-image: url('background.jpg'); 
+            background-size: cover;
+            background-position: center;
+            height: calc(100% - 56px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-blue border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BankTransactions</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Transactions" asp-action="Index">Transactions</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <partial name="_Loginpartial" />
+        </nav>
+        <div>
+@*        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BankTransations</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Transactions" asp-action="Index">Transactions</a>
+                        </li>
+                       @* <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>*@  
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div id="mainbody-container" class="col-md-8 offset-md-2">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="form-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-family:Garamond" class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="product-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-family:Garamond" class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="loaderbody" id="loaderbody">
+        <div class="loader">
+
+        </div>
+    </div>*@
+
+    <footer style="background-color:#457; padding-top:30px; margin-top:5% " class="text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 col-md-12">
+                    <div>
+                        <h3 style="font-family:'Arial Rounded MT'">About:</h3>
+                        <p style="font-family:'Times New Roman'" class="mb-30 footer-desc">
+                            Bank Transactions web application is user-friendly web app created in ASP.NET Core MVC.
+                            This platform produces facility to user to create, edit and delete bank accounts.
+                            Also user can see details of his account and do changes accordingly. This platform also provides the facility to withdraw amount from total amount.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xl-2 offset-xl-1 col-lg-3 col-md-12">
+                    <div class="">
+                        <h4 style="font-family:'Arial Rounded MT'">Developers:</h4>
+                        <ul style="font-family:'Times New Roman'" class="list-unstyled">
+                            <li>Junaid Shahpal</li>
+                            <li>Ahmer</li>
+                            <li>Hammad Rehman</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6">
+                    <div style="padding-left:20px">
+                        <h4 style="font-family:'Arial Rounded MT'">Services:</h4>
+                        <ul style="font-family:'Times New Roman'" class="list-unstyled">
+                            <li>Accounts</li>
+                            <li>Bank Transaction</li>
+                            <li>Money withdraw</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6">
+                    <div>
+                        <h4 style="font-family:'Arial Rounded MT'">Contact Information:</h4>
+                        <ul style="font-family:'Times New Roman'" class="list-unstyled">
+                            <li>
+                                <p>+92 3491884933</p>
+                            </li>
+                            <li>
+                                <p>
+                                    <a href="https://mail.google.com/mail/u/0/#inbox">junaidshapal66@gmail.com</a>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Student Of National Skills University Islamabad
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+            </div>
+        </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/notify.min.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
