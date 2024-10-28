@@ -37,7 +37,7 @@ namespace BankTransations.Models
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("Transaction")]
+        [ForeignKey("Transaction")] //It is a foreign key of this table and primary key of Transaction Table
         public int TransactionId { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
