@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BankTransations.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class TransactionsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -29,7 +29,7 @@ namespace BankTransations.Controllers
 
             if(t == null)
             {
-                return NotFound("Transaction not found");
+                return NotFound("Transactions not found");
             }
 
             if(Amount > t.Amount)
