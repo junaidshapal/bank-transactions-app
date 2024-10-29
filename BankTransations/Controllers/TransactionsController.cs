@@ -58,9 +58,9 @@ namespace BankTransations.Controllers
         [HttpGet]
         public async Task<IActionResult> GetWithdrawsByTransationId(int TransactionId)
         {
-            var withdraws = await _context.Withdraws.Where(x => x.TransactionId == TransactionId).ToListAsync();
+           // var withdraws = await _context.Withdraws.Where(x => x.TransactionId == TransactionId).ToListAsync();
 
-            return Json(withdraws);
+           // return Json(withdraws);
         }
 
         // GET: Transactions
