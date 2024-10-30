@@ -88,6 +88,11 @@ namespace BankTransations.Controllers
             return View(transaction);
         }
 
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok();
+        }
+
         // GET: Transactions/AddOrEdit
         [NoDirectAccess]
         public async Task<IActionResult> AddOrEdit(int id = 0)
