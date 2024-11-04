@@ -25,7 +25,7 @@ namespace BankTransations.Controllers
         public async Task<IActionResult> SaveWithdraw(decimal Amount, int TransactionId)
         {
 
-            var t = await _context.Transactions.FindAsync(TransactionId);
+            //var t = await _context.Transactions.FindAsync(TransactionId);
 
             if(t == null)
             {
