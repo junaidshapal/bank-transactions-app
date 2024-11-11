@@ -55,6 +55,7 @@ namespace BankTransations.Controllers
             return Json(true);
         }
 
+        //NEw Method that return json
         [HttpGet]
         public async Task<IActionResult> GetWithdrawsByTransationId(int TransactionId)
         {
