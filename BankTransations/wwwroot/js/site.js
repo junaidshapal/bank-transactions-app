@@ -17,6 +17,7 @@
 
 //Show in Popup
 var showInPopup = (url, title) => {
+    //AJAX call
     $.ajax({
         type: "GET",
         url: url,
