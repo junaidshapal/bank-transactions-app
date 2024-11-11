@@ -213,6 +213,8 @@ namespace BankTransations.Controllers
         //}
 
         // POST: Transactions/Delete/5
+
+        //Delete 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
