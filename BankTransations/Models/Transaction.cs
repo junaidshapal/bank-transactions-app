@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,6 +32,8 @@ namespace BankTransations.Models
         public int Amount { get; set; }
         [DisplayFormat(DataFormatString ="{0:MMM-dd-yyyy}")]
         public DateTime Date { get; set; }
+        //public string UserId { get; set; }
+        //public IdentityUser User { get; set; }
     }
 
     public class Withdraw
@@ -42,5 +45,6 @@ namespace BankTransations.Models
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public virtual Transaction Transaction { get; set; }
+       
     }
 }

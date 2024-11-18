@@ -35,7 +35,7 @@ namespace BankTransations.Migrations
 
                     b.HasKey("OrderId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("BankTransations.Models.OrderDetail", b =>
@@ -61,7 +61,7 @@ namespace BankTransations.Migrations
 
                     b.HasKey("OrderDetailId");
 
-                    b.ToTable("OrderDetails");
+                    b.ToTable("OrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("BankTransations.Models.Product", b =>
@@ -81,7 +81,7 @@ namespace BankTransations.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("BankTransations.Models.Transaction", b =>
@@ -118,7 +118,7 @@ namespace BankTransations.Migrations
 
                     b.HasKey("TransactionId");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("BankTransations.Models.Withdraw", b =>
@@ -142,7 +142,7 @@ namespace BankTransations.Migrations
 
                     b.HasIndex("TransactionId");
 
-                    b.ToTable("Withdraws");
+                    b.ToTable("Withdraws", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

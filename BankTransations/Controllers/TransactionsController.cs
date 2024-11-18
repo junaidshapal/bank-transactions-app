@@ -11,7 +11,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BankTransations.Controllers
 {
+    
     [Authorize]
+   
     public class TransactionsController : Controller
     {
         private readonly ApplicationDbContext _context;
