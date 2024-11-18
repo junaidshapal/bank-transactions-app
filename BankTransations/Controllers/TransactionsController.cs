@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BankTransations.DbContextClass;
 using BankTransations.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace BankTransations.Controllers
 {
@@ -17,9 +18,11 @@ namespace BankTransations.Controllers
     public class TransactionsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public TransactionsController(ApplicationDbContext context)
+        public TransactionsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
         }
 

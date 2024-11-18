@@ -32,8 +32,7 @@ namespace BankTransations.Models
         public int Amount { get; set; }
         [DisplayFormat(DataFormatString ="{0:MMM-dd-yyyy}")]
         public DateTime Date { get; set; }
-        //public string UserId { get; set; }
-        //public IdentityUser User { get; set; }
+        
     }
 
     public class Withdraw
